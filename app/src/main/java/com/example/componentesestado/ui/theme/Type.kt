@@ -1,10 +1,18 @@
 package com.example.componentesestado.ui.theme
 
+import android.R.attr.font
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.componentesestado.R
+
+// Adicionando uma nova fonte
+val Righteus = FontFamily(
+    Font(R.font.righteous_regular)
+)
 
 // Set of Material typography styles to start with
 val Typography = Typography(
