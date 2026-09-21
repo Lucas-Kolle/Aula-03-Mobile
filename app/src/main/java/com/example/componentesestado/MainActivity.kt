@@ -82,6 +82,21 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
         mutableStateOf("")
     }
 
+    // Criando uma variável para o checkBox
+    var checkBox1 by remember {
+        mutableStateOf(false)
+    }
+
+    // Criando uma variável para o checkBox
+    var checkBox2 by remember {
+        mutableStateOf(false)
+    }
+
+    // Criando uma variável para o checkBox
+    var checkBox3 by remember {
+        mutableStateOf(false)
+    }
+
     // Criando um componente "Column"
     Column(
         modifier = modifier
@@ -176,8 +191,34 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             Checkbox(
-                checked = false,
-                onCheckedChange = {},
+                checked = checkBox1,
+                onCheckedChange = {checkBox1 = it},
+                colors = CheckboxDefaults.colors(
+                    checkedColor = Color.Green,
+                    uncheckedColor =  Color.Red
+                )
+            )
+
+            Text(text = "Texto para o CheckBox")
+        }
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Checkbox(
+                checked = checkBox2,
+                onCheckedChange = {checkBox2 = it},
+                colors = CheckboxDefaults.colors(
+                    checkedColor = Color.Green,
+                    uncheckedColor =  Color.Red
+                )
+            )
+
+            Text(text = "Texto para o CheckBox")
+        }
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Checkbox(
+                checked = checkBox3,
+                onCheckedChange = {checkBox3 = it},
                 colors = CheckboxDefaults.colors(
                     checkedColor = Color.Green,
                     uncheckedColor =  Color.Red
