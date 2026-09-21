@@ -13,10 +13,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -66,6 +68,10 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
     }
 
     var numberTextField by remember { // Usando o "by" para substituir o ".value"
+        mutableStateOf("")
+    }
+
+    var email by remember {
         mutableStateOf("")
     }
 
@@ -126,11 +132,29 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
 
         TextField(
             value = numberTextField,
-            onValueChange = {novoValor -> numberTextField = novoValor},
+            onValueChange = { novoValor -> numberTextField = novoValor },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             placeholder = {
                 Text(text = "Digete sua idade")
             }
+        )
+
+        OutlinedTextField(
+            value = email,
+            onValueChange = { email = it },
+            singleLine = true,
+            modifier = Modifier
+                .fillMaxWidth(),
+            placeholder = {
+                Text(text = "Digite seu email")
+            },
+            label = {
+                Text(text = "email")
+            },
+            shape = RoundedCornerShape( // Mudando o formato da caixa de texto
+                topStart = 32.dp,
+                bottomEnd = 32.dp
+            )
         )
 
 //        // Chamando o composable que nós criamos
