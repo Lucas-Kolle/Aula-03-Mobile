@@ -1,6 +1,7 @@
 package com.example.componentesestado
 
 import android.R.attr.contentDescription
+import android.R.attr.letterSpacing
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,9 +13,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,6 +33,8 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -46,6 +59,16 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BasicComponetsScreen(modifier: Modifier = Modifier) {
+
+    // Criando uma variável para guardar o valor do textField
+    val textFieldValue = remember {
+        mutableStateOf("")
+    }
+
+    var numberTextField by remember { // Usando o "by" para substituir o ".value"
+        mutableStateOf("")
+    }
+
     // Criando um componente "Column"
     Column(
         modifier = modifier
@@ -73,18 +96,55 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.align(Alignment.CenterHorizontally) // Alinha no centro horizontamente
         )
 
-        // Chamando o composable que nós criamos
-        AndroidEnemy(
-            color = Color.Red,
+        // Criando uma caixa de texto
+        TextField(
+            value = textFieldValue.value,
+            onValueChange = {novoValor -> textFieldValue.value = novoValor},
             modifier = Modifier
-                .size(100.dp)
+                .fillMaxWidth(),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, capitalization = KeyboardCapitalization.Characters), // Mudando os atributos do teclado (número ou textual, começar com letra maiúscula ou minúscula)
+            placeholder = { // Texto demonstrataivo que fica dentro da caixa de texto
+                Text(text = "Digite o seu nome (PLACEHOLDER)")
+            },
+            label = { // Texto que fica acima do texto que o usuário digita "etiqueta"
+                Text(text = "Nome e Sobrenome (LABEL)")
+            },
+            leadingIcon = { // Adiciona um ícone na caixa de texto (cadeado, avatar e etc)
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = "Ícone de pessoa",
+                    tint = Color.Gray
+                )
+            },
+            colors = TextFieldDefaults.colors(
+                focusedTextColor = Color.Blue, // Muda a cor quando o foco estiver lá
+                unfocusedTextColor = Color.Red, // Muda a cor quando o foco não estiver lá
+                unfocusedPlaceholderColor = Color.Magenta, // Muda a cor do placeholder quando o foco não estiver lá
+
+            )
         )
 
-        AndroidEnemy(
-            color = Color.Blue,
-            modifier = Modifier
-                .size(150.dp)
+        TextField(
+            value = numberTextField,
+            onValueChange = {novoValor -> numberTextField = novoValor},
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            placeholder = {
+                Text(text = "Digete sua idade")
+            }
         )
+
+//        // Chamando o composable que nós criamos
+//        AndroidEnemy(
+//            color = Color.Red,
+//            modifier = Modifier
+//                .size(100.dp)
+//        )
+//
+//        AndroidEnemy(
+//            color = Color.Blue,
+//            modifier = Modifier
+//                .size(150.dp)
+//        )
     }
 }
 
