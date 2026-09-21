@@ -3,12 +3,14 @@ package com.example.componentesestado
 import android.R.attr.contentDescription
 import android.R.attr.letterSpacing
 import android.os.Bundle
+import android.widget.CheckBox
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +21,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -167,6 +171,21 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
                 unfocusedBorderColor = Color.Red
             )
         )
+
+        Spacer(modifier = Modifier.height(16.dp)) // Adicionando um componente vazio para servir de espaço
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Checkbox(
+                checked = false,
+                onCheckedChange = {},
+                colors = CheckboxDefaults.colors(
+                    checkedColor = Color.Green,
+                    uncheckedColor =  Color.Red
+                )
+            )
+
+            Text(text = "Texto para o CheckBox")
+        }
 
 //        // Chamando o composable que nós criamos
 //        AndroidEnemy(
