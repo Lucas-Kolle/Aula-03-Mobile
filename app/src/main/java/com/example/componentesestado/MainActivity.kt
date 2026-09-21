@@ -29,6 +29,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.RadioButton
@@ -108,11 +109,16 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
         mutableStateOf(0)
     }
 
+    // Criando um estado para mudar a cor de fundo qusndo clicar no botão
+    var corFundo by remember {
+        mutableStateOf(Color(239, 247, 207))
+    }
+
     // Criando um componente "Column"
     Column(
         modifier = modifier
             .fillMaxSize() // Ocupa o espaço disponível
-            .background(Color(239, 247, 207))
+            .background(corFundo)
     ) {
         // Criando um componente "Text"
         Text(
@@ -293,6 +299,14 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
 
                     Text(text = "Like")
                 }
+            }
+
+            OutlinedButton(
+                onClick = {
+                    corFundo = Color.Yellow
+                }
+            ) {
+                Text(text = "Trocar cor de fundo")
             }
         }
 
