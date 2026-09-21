@@ -7,6 +7,7 @@ import android.widget.CheckBox
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,6 +23,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -274,9 +276,23 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
                 colors = ButtonDefaults.buttonColors(
                     contentColor = Color.Blue,
                     containerColor = Color.Green
+                ),
+                border = BorderStroke(4.dp, Color.Red),
+                shape = RoundedCornerShape(
+                    topEnd = 12.dp,
+                    bottomStart = 12.dp
                 )
              ){
-                Text(text = "Clique Aqui")
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.ThumbUp,
+                        contentDescription = "Like"
+                    )
+
+                    Text(text = "Like")
+                }
             }
         }
 
