@@ -26,6 +26,7 @@ import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -44,6 +45,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -95,6 +97,10 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
     // Criando uma variável para o checkBox
     var checkBox3 by remember {
         mutableStateOf(false)
+    }
+
+    var sistemaSelecionado by remember {
+        mutableStateOf(0)
     }
 
     // Criando um componente "Column"
@@ -226,6 +232,33 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
             )
 
             Text(text = "Texto para o CheckBox")
+        }
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = sistemaSelecionado == 0,
+                onClick = {sistemaSelecionado = 0}
+            )
+
+            Text(text = "Windons")
+        }
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = sistemaSelecionado == 1,
+                onClick = {sistemaSelecionado = 1}
+            )
+
+            Text(text = "MacOS")
+        }
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = sistemaSelecionado == 2,
+                onClick = {sistemaSelecionado = 2}
+            )
+
+            Text(text = "Linux")
         }
 
 //        // Chamando o composable que nós criamos
