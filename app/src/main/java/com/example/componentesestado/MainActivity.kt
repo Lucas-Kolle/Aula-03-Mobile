@@ -19,6 +19,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -154,6 +155,10 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape( // Mudando o formato da caixa de texto
                 topStart = 32.dp,
                 bottomEnd = 32.dp
+            ),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = Color.Blue,
+                unfocusedBorderColor = Color.Red
             )
         )
 
