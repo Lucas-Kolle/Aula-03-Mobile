@@ -9,8 +9,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -131,6 +133,8 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
             )
         )
 
+        Spacer(modifier = Modifier.height(16.dp)) // Adicionando um componente vazio para servir de espaço
+
         TextField(
             value = numberTextField,
             onValueChange = { novoValor -> numberTextField = novoValor },
@@ -139,6 +143,8 @@ fun BasicComponetsScreen(modifier: Modifier = Modifier) {
                 Text(text = "Digete sua idade")
             }
         )
+
+        Spacer(modifier = Modifier.height(16.dp)) // Adicionando um componente vazio para servir de espaço
 
         OutlinedTextField(
             value = email,
